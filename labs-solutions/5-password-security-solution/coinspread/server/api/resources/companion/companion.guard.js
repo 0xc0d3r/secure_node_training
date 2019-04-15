@@ -1,0 +1,1 @@
+/* No schema validation required for this resource */

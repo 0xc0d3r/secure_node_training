@@ -1,0 +1,17 @@
+<h2>Activity Feed</h2>
+
+<alert [dismissible]="dismissible" *ngIf="errorMessage" type="danger">{{ errorMessage }}
+</alert>
+
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let activity of activities">
+    <div class="container">
+      <div class="col-sm-12">
+        <h5>{{ activity.from }} </h5>
+        <p> {{activity.createdAt | date}}</p>
+        <p [innerHTML]="activity.trustedNote"></p>
+      </div>
+    </div>
+  </li>
+</ul>

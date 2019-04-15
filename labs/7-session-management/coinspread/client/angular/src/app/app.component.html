@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+  <a class="navbar-brand" routerLink="/home">[...coin]</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <ul *ngIf="auth.isAuthenticated() && !auth.isAdmin()" class="nav navbar-nav">
+        <li class="nav-item"><a class="nav-link" routerLink="/activity">Activity</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/wallet">Wallets</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/friend">Friends</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/companion">Out there</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/home" (click)="auth.logout()">Sign Out</a></li>
+      </ul>
+      <ul *ngIf="auth.isAuthenticated() && auth.isAdmin()" class="nav navbar-nav">
+        <li class="nav-item"><a class="nav-link" routerLink="/fees">Manage Fees</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/home" (click)="auth.logout()">Sign Out
+          </a></li>
+      </ul>
+
+    </ul>
+  </div>
+</nav>
+<br /><br />
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

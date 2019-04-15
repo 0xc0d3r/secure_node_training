@@ -1,0 +1,8 @@
+<div class="card shadow zindex-100">
+  <div class="card-body px-md-5 py-5">
+
+    <h1>Welcome to Coin Spread!</h1>
+    <p><a class="btn btn-primary btn-lg" routerLink="/login" *ngIf="!auth.isAuthenticated()" role="button">Log In</a></p>
+    <p><a class="btn btn-primary btn-lg" (click)="logout()" *ngIf="auth.isAuthenticated()" role="button">Log Out</a></p>
+  </div>
+</div>

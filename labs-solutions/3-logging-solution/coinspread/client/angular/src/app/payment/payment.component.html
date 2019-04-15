@@ -1,0 +1,37 @@
+<h2>Pay to {{friend.firstname}} {{friend.lastname}} ({{ friend.username}})</h2>
+<br>
+<div *ngIf="errorMessage">
+  <alert type="danger">{{ errorMessage }}</alert>
+</div>
+<div *ngIf="successMessage">
+  <alert *ngIf="successMessage" type="success">{{ successMessage }}</alert>
+</div>
+<div class="col-sm-6 col-sm-offset-3">
+
+  <form #payFriendForm="ngForm" (ngSubmit)="payFriend(payFriendForm.value)">
+    <div class="form-group">
+      <label for="balance">Wallet</label>
+      <select class="form-control" name="wallet" ngModel required>
+        <option *ngFor="let wallet of wallets" [value]="wallet._id">{{wallet.name}} - Available Balance:
+          {{wallet.balance}}
+          {{wallet.currency}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Amount</label>
+      <input type="text" class="form-control" placeholder="Enter amount to pay" name="amount" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="username">Note</label>
+      <textarea class="form-control" placeholder="Payment for..." name="note" ngModel required></textarea>
+    </div>
+    <input type="hidden" class="form-control" name="friendUserId" [(ngModel)]="friend.id" required>
+    <button type="submit" class="btn btn-primary">Pay</button>
+    <button type="submit" class="btn btn-secondary ml-3" (click)="goBack()">Back</button>
+
+  </form>
+
+
+</div>

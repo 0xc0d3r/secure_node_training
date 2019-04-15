@@ -1,0 +1,20 @@
+<h2>You May Know</h2>
+
+<alert [dismissible]="dismissible" *ngIf="errorMessage" type="danger">{{ errorMessage }}
+</alert>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let companion of companions">
+    <div class="container">
+      <div class="col-sm-12">
+        <h4>{{ companion.firstname}} {{ companion.lastname}} - {{ companion.username}}</h4>
+        <p> {{ companion.city}}, {{ companion.country}} </p>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" *ngIf="auth.isAuthenticated()" routerLink="/friend/add/{{companion.id}}">
+      <i class="glyphicon glyphicon-plus"></i> Add to Friends
+    </button>
+
+  </li>
+</ul>

@@ -1,0 +1,29 @@
+<h2>Set Transaction Fees (in %)</h2>
+<br>
+<div *ngIf="errorMessage">
+  <alert dismissible="true" type="danger">{{ errorMessage }}</alert>
+</div>
+<div *ngIf="successMessage">
+  <alert dismissible=true *ngIf="successMessage" type="success">{{ successMessage }}</alert>
+</div>
+<div class="col-sm-6 col-sm-offset-3">
+  <form #manageFeesForm="ngForm" (ngSubmit)="saveFees(manageFeesForm.value)">
+    <div class="form-group">
+      <label for="name" class="">BitCoin Transaction</label>
+      <input type="text" class="form-control" placeholder="%" name="btc_fees" [(ngModel)]="fees.btc_fees">
+    </div>
+    <div class="form-group">
+      <label for="name" class="">BitCash Transaction</label>
+      <input type="text" class="form-control" placeholder="%" name="bch_fees" [(ngModel)]="fees.bch_fees" required>
+    </div>
+    <div class="form-group">
+      <label for="name" class="">Euthereum Transaction</label>
+      <input type="text" class="form-control" placeholder="%" name="eth_fees" [(ngModel)]="fees.eth_fees" required>
+    </div>
+    <div class="form-group">
+      <label for="name" class="">Litecoin Transaction</label>
+      <input type="text" class="form-control" placeholder="%" name="ltc_fees" [(ngModel)]="fees.ltc_fees" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>

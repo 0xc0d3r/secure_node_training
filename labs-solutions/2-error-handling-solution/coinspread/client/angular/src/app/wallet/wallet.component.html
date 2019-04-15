@@ -1,0 +1,20 @@
+<alert [dismissible]="dismissible" *ngIf="errorMessage" type="danger">{{ errorMessage }}
+</alert>
+
+<h2>My Wallets</h2>
+<button class="btn btn-primary" *ngIf="auth.isAuthenticated()" routerLink="/wallet/new">
+  <i class="glyphicon glyphicon-plus"></i> Add Wallet
+</button>
+
+<ul class="list-group mt-3">
+  <li class="list-group-item" *ngFor="let wallet of wallets">
+    <div class="container">
+      <div class="col-sm-12">
+        <h3 [innerHTML]="wallet.trustedName"></h3>
+        <p> Currency: {{ wallet.currency }}</p>
+        <p> Balance: {{ wallet.balance }}</p>
+        <p> Address: {{ wallet.address }}</p>
+      </div>
+    </div>
+  </li>
+</ul>

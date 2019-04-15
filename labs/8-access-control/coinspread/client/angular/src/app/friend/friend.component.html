@@ -1,0 +1,26 @@
+<h2>Friends</h2>
+
+<alert [dismissible]="dismissible" *ngIf="errorMessage" type="danger">{{ errorMessage }}
+</alert>
+
+<div class="row" *ngIf="friends?.length == 0">
+  <div class="container">
+    <div class="col-sm-12">
+      No records found.
+    </div>
+  </div>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let friend of friends">
+    <div class="container">
+      <div class="col-sm-12">
+        <h4>{{ friend.firstname}} {{ friend.lastname}} - {{ friend.username}}</h4>
+        <p> {{ friend.city}}, {{ friend.country}} </p>
+      </div>
+    </div>
+    <button class="btn btn-primary" *ngIf="auth.isAuthenticated()" routerLink="/pay/{{ friend.id }}">
+      <i class="glyphicon glyphicon-plus"></i> Pay
+    </button>
+  </li>
+</ul>

@@ -1,0 +1,22 @@
+<h2>Add New Friend</h2>
+<br>
+<br>
+<div *ngIf="errorMessage">
+  <alert dismissible="true" type="danger">{{ errorMessage }}</alert>
+</div>
+<div *ngIf="successMessage">
+  <alert dismissible=true *ngIf="successMessage" type="success">{{ successMessage }}</alert>
+</div>
+
+<div class="col-sm-6 col-sm-offset-3">
+  <form #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm.value)">
+    <div class="form-group">
+      <h4>{{ companion.firstname}} {{ companion.lastname}} - {{ companion.username}}</h4>
+      <p> {{ companion.city}}, {{ companion.country}} </p>
+      <input type="hidden" class="form-control" name="friendUserId" [(ngModel)]="companion._id">
+
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-secondary ml-3" (click)="goBack()">Back</button>
+  </form>
+</div>
